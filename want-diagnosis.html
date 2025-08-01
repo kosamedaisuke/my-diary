@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WANT診断ミニゲーム</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      background-color: #f6f6f6;
+      color: #333;
+      text-align: center;
+      padding: 2rem;
+    }
+    header img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+    .question {
+      margin: 2rem auto;
+      max-width: 600px;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .choices button {
+      display: block;
+      margin: 0.5rem auto;
+      padding: 0.7rem 1.2rem;
+      border: none;
+      background-color: #6c63ff;
+      color: #fff;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .choices button:hover {
+      background-color: #5548d3;
+    }
+    .result {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="want_banner.png" alt="WANT診断バナー">
+    <h1>あなたのWANTタイプ診断</h1>
+  </header>
+
+  <main>
+    <div id="quiz" class="question">
+      <p id="question-text">質問を読み込み中...</p>
+      <div class="choices" id="choices"></div>
+    </div>
+
+    <div id="result" class="result" style="display:none;">
+      <h2>診断結果</h2>
+      <p id="result-text"></p>
+    </div>
+  </main>
+
+  <script>
+    const questions = [
+      {
+        text: "どんなときに最もやる気が湧きますか？",
+        choices: [
+          { text: "目標に近づいている実感があるとき", type: "達成タイプ" },
+          { text: "誰かに感謝されたとき", type: "貢献タイプ" },
+          { text: "新しいことを学べたとき", type: "成長タイプ" },
+          { text: "自分のペースで進められているとき", type: "自由タイプ" }
+        ]
+      },
+      {
+        text: "理想の1日はどれに近い？",
+        choices: [
+          { text: "朝から予定通りにタスクをこなす", type: "達成タイプ" },
+          { text: "誰かの悩みを聞いて一緒に解決", type: "貢献タイプ" },
+          { text: "本を読んだり、スキルを練習", type: "成長タイプ" },
+          { text: "気ままにカフェや散歩", type: "自由タイプ" }
+        ]
+      },
+      {
+        text: "今後の人生で一番叶えたいことは？",
+        choices: [
+          { text: "大きな成果や結果を残すこと", type: "達成タイプ" },
+          { text: "人の役に立つこと", type: "貢献タイプ" },
+          { text: "自分の可能性を広げること", type: "成長タイプ" },
+          { text: "自由で制約のない生活", type: "自由タイプ" }
+        ]
+      }
+    ];
+
+    let currentQuestion = 0;
+    const scores = {
+      "達成タイプ": 0,
+      "貢献タイプ": 0,
+      "成長タイプ": 0,
+      "自由タイプ": 0
+    };
+
+    const questionText = document.getElementById("question-text");
+    const choicesDiv = document.getElementById("choices");
+    const resultDiv = document.getElementById("result");
+    const resultText = document.getElementById("result-text");
+
+    function showQuestion() {
+      const q = questions[currentQuestion];
+      questionText.textContent = q.text;
+      choicesDiv.innerHTML = "";
+      q.choices.forEach(choice => {
+        const btn = document.createElement("button");
+        btn.textContent = choice.text;
+        btn.onclick = () => {
+          scores[choice.type]++;
+          currentQuestion++;
+          if (currentQuestion < questions.length) {
+            showQuestion();
+          } else {
+            showResult();
+          }
+        };
+        choicesDiv.appendChild(btn);
+      });
+    }
+
+    function showResult() {
+      document.getElementById("quiz").style.display = "none";
+      resultDiv.style.display = "block";
+      const topType = Object.entries(scores).sort((a,b) => b[1] - a[1])[0][0];
+      resultText.textContent = `あなたのWANTタイプは「${topType}」です！`;
+    }
+
+    showQuestion();
+  </script>
+</body>
+</html>
