@@ -64,3 +64,29 @@ footer {
   padding: 1rem;
   color: #777;
 }
+/* 既存の内容の下に、追加で貼り付けてOKです */
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.menu-card {
+  background: #ffffff;
+  border-left: 5px solid #3c40c6;
+  padding: 1.2rem;
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.menu-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
