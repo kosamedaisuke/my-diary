@@ -5,6 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>プロジェクトマップ｜小林大資</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .step {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .step h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #3c40c6;
+    }
+
+    .step-content {
+      display: none;
+      margin-top: 0.5rem;
+    }
+
+    .step.active .step-content {
+      display: block;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -13,51 +38,51 @@
       <ul>
         <li><a href="index.html">トップ</a></li>
         <li><a href="profile.html">プロフィール</a></li>
-        <li><a href="#">日記</a></li>
+        <li><a href="tools.html">ツール</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
     <section>
-      <h2>現在の主なプロジェクト</h2>
-      <ul>
-        <li>
-          <strong>🔹 著作</strong><br>
-          書籍『真の自分への旅』の執筆を中心に、認知科学コーチングのエッセンス「在り方」や「無意識の構造」に関する知の体系化。
-        </li>
-        <li>
-          <strong>🔹 人生設計支援サービス</strong><br>
-          ワークシート、テンプレート、対話型コーチングなどを通じて、個人の再設計を支援。
-        </li>
-        <li>
-          <strong>🔹 AP Inc ビジネス支援</strong><br>
-          教育コンテンツ制作、トレーニング設計、価値観型ビジネスの発信と拡張。
-        </li>
-        <li>
-          <strong>🔹 AI活用×自己変革</strong><br>
-          ChatGPTを活用したセルフコーチング、構造整理、思考ツール化の実験と実装。
-        </li>
-      </ul>
+      <h2>🧭 プロジェクトの全体像</h2>
+
+      <div class="step" onclick="toggleStep(this)">
+        <h3>STEP 1：0→1（大量行動）</h3>
+        <div class="step-content">
+          <p>とにかく行動するフェーズ。発信・人との対話・経験を通して、「語る資格」「自分の型」を獲得。</p>
+        </div>
+      </div>
+
+      <div class="step" onclick="toggleStep(this)">
+        <h3>STEP 2：1→10（設計＆拡張）</h3>
+        <div class="step-content">
+          <p>再現性の確認・マニュアル化・構造整理を行い、個人の思想を“他者が使える形”にデザインする段階。</p>
+        </div>
+      </div>
+
+      <div class="step" onclick="toggleStep(this)">
+        <h3>STEP 3：10→100（展開）</h3>
+        <div class="step-content">
+          <p>SNS発信、仕組み化、プロダクト開発、仲間づくりなどを通して、社会へのインパクトを広げていく段階。</p>
+        </div>
+      </div>
     </section>
 
     <section>
-      <h2>全体マップ構造（図式）</h2>
-      <p>※後日、画像や概念図として掲載予定（例：PDFや画像でアップも可）</p>
-    </section>
-
-    <section>
-      <h2>今後の予定と構想</h2>
-      <ol>
-        <li>STEP1：知識・思考の可視化と共有（現在）</li>
-        <li>STEP2：再現性ある支援メソッドの体系化</li>
-        <li>STEP3：SNS・講座・仲間作りによる実装フェーズ</li>
-      </ol>
+      <h2>🗺 全体構造マップ</h2>
+      <p>（今後ここに図・画像・構造ツリーを掲載予定）</p>
     </section>
   </main>
 
   <footer>
     <p>© 2025 小林大資</p>
   </footer>
+
+  <script>
+    function toggleStep(element) {
+      element.classList.toggle("active");
+    }
+  </script>
 </body>
 </html>
