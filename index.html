@@ -2,32 +2,119 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>小林大資｜ポータルサイト</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>小林大資｜思考と実践の航海記</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9ff;
+    }
+    header {
+      background: #7a5fff;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    nav {
+      margin-top: 1rem;
+    }
+    nav a {
+      background: #5b50d8;
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      margin: 0 0.25rem;
+      border-radius: 10px;
+    }
+    nav a:hover {
+      background: #463bb4;
+    }
+    .intro {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .card {
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .card h3 {
+      margin-top: 0;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #ecebfd;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>小林大資｜思考と実践の航海記</h1>
-   <nav>
-  <ul>
-    <li><a href="profile.html">プロフィール</a></li>
-    <li><a href="projects.html">プロジェクトマップ</a></li>
-    <li><a href="board.html">掲示板</a></li>
-    <li><a href="diary.html">日記</a></li>
-    <li><a href="books.html">書物</a></li>
-    <li><a href="tools.html">シェア資料</a></li>
-  </ul>
-</nav>
-
+    <nav>
+      <a href="profile.html">プロフィール</a>
+      <a href="projects.html">プロジェクトマップ</a>
+      <a href="board.html">掲示板</a>
+      <a href="diary.html">日記</a>
+      <a href="books.html">書物</a>
+      <a href="tools.html">シェア資料</a>
+    </nav>
   </header>
 
-  <main>
-    <section>
-      <h2>Welcome</h2>
-      <p>このページは、小林大資の思想・日記・プロジェクト・ツールなどを集約した個人ポータルです。</p>
-    </section>
-  </main>
+  <section class="intro">
+    <h2>Welcome</h2>
+    <p>このページは、小林大資の思考・日記・プロジェクト・ツールなどを集約した個人ポータルです。</p>
+  </section>
+
+  <section class="features">
+    <div class="card">
+      <h3>📖 プロフィール</h3>
+      <p>小林大資とは何者か？これまでの人生・経験・価値観について。</p>
+      <a href="profile.html">▶ 開く</a>
+    </div>
+    <div class="card">
+      <h3>🗺 プロジェクト</h3>
+      <p>現在進行中の企画・調査・研究を時系列と構造で可視化。</p>
+      <a href="projects.html">▶ 開く</a>
+    </div>
+    <div class="card">
+      <h3>💬 掲示板</h3>
+      <p>訪問者や仲間とコミュニケーションするための掲示板。</p>
+      <a href="board.html">▶ 開く</a>
+    </div>
+    <div class="card">
+      <h3>📓 日記</h3>
+      <p>日々の気づき・記録・進捗・人生の航海ログ。</p>
+      <a href="diary.html">▶ 開く</a>
+    </div>
+    <div class="card">
+      <h3>📚 書物</h3>
+      <p>書き上げた本・構想中の思想集・人生設計論などを掲載。</p>
+      <a href="books.html">▶ 開く</a>
+    </div>
+    <div class="card">
+      <h3>🧠 シェア資料</h3>
+      <p>WANT診断など、考えるためのツールやスプレッドシート集。</p>
+      <a href="tools.html">▶ 開く</a>
+    </div>
+  </section>
 
   <footer>
     <p>© 2025 小林大資</p>
