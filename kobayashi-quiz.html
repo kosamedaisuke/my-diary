@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小林大資クイズ</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f4f4f9;
+      color: #333;
+      padding: 2rem;
+      text-align: center;
+    }
+    .quiz-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .question {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .options button {
+      display: block;
+      margin: 0.5rem auto;
+      padding: 0.75rem;
+      width: 80%;
+      background: #e0e0ff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .options button:hover {
+      background: #c2c2ff;
+    }
+    #result {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>小林大資クイズ</h1>
+    <div id="quiz"></div>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        q: "小林大資の最も中心的に大切にしている価値観として最も近いものは？",
+        a: ["お金が稼ぎたい", "幸せになりたい", "他人や自分に勝ちたい"],
+        correct: 1
+      },
+      {
+        q: "小林大資の活動の一環として行っていないものは？",
+        a: ["認知科学を活用したコーチング", "ビジネス等の調査、活動", "飲食店の経営代行"],
+        correct: 2
+      },
+      {
+        q: "小林大資が嫌いな食べ物は？",
+        a: ["ゴーヤ", "しいたけ", "トマト"],
+        correct: 2
+      }
+      // ← ここにさらに27問追加可能です
+    ];
+
+    let current = 0;
+    let score = 0;
+
+    const quizDiv = document.getElementById("quiz");
+    const resultDiv = document.getElementById("result");
+
+    function showQuestion() {
+      if (current >= 10) return showResult();
+
+      const q = questions.sort(() => 0.5 - Math.random())[current];
+      quizDiv.innerHTML = `
+        <div class="question">Q${current + 1}. ${q.q}</div>
+        <div class="options">
+          ${q.a.map((opt, i) => `<button onclick="answer(${i})">${opt}</button>`).join('')}
+        </div>
+      `;
+    }
+
+    function answer(selected) {
+      const correct = questions[current].correct;
+      if (selected === correct) score += 10;
+      current++;
+      showQuestion();
+    }
+
+    function showResult() {
+      let message = "";
+      if (score <= 30) message = "🟡 まだまだこれから！大資入門レベル";
+      else if (score <= 70) message = "🟠 なかなかの理解者！";
+      else message = "🟢 あなたは小林大資マスター！";
+
+      quizDiv.innerHTML = "";
+      resultDiv.innerHTML = `あなたの得点：${score}点<br>${message}`;
+    }
+
+    showQuestion();
+  </script>
+</body>
+</html>
