@@ -53,21 +53,22 @@
   </div>
 
   <script>
-    const questions = [
-      {
+    const allQuestions = [
+
+　　　{
         q: "小林大資の最も中心的に大切にしている価値観として最も近いものは？",
         a: ["お金が稼ぎたい", "幸せになりたい", "他人や自分に勝ちたい"],
-        correct: 1
+        correct: 2
       },
       {
         q: "小林大資の活動の一環として行っていないものは？",
         a: ["認知科学を活用したコーチング", "ビジネス等の調査、活動", "飲食店の経営代行"],
-        correct: 2
+        correct: 3
       },
       {
         q: "小林大資が嫌いな食べ物は？",
         a: ["ゴーヤ", "しいたけ", "トマト"],
-        correct: 2
+        correct: 3
       },
       {
  　　　 q: "小林大資の出身地は？",
@@ -204,12 +205,12 @@
  　　　 a: ["すいか", "りんご", "みかん"],
  　　　 correct: 3
 　　　　},
-      
-      
-      
-      
+　　　 ];
 
-    ];
+    // ✅ ランダムに10問選ぶ（最初に一度だけシャッフルして保存）
+    const selectedQuestions = allQuestions
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 10);
 
     let current = 0;
     let score = 0;
@@ -218,9 +219,9 @@
     const resultDiv = document.getElementById("result");
 
     function showQuestion() {
-      if (current >= 10) return showResult();
+      if (current >= selectedQuestions.length) return showResult();
 
-      const q = questions.sort(() => 0.5 - Math.random())[current];
+      const q = selectedQuestions[current];
       quizDiv.innerHTML = `
         <div class="question">Q${current + 1}. ${q.q}</div>
         <div class="options">
@@ -230,7 +231,7 @@
     }
 
     function answer(selected) {
-      const correct = questions[current].correct;
+      const correct = selectedQuestions[current].correct - 1; // 正解は1始まり→0始まりに変換
       if (selected === correct) score += 10;
       current++;
       showQuestion();
@@ -250,3 +251,6 @@
   </script>
 </body>
 </html>
+
+
+      
