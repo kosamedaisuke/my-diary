@@ -17,6 +17,8 @@
       color: white;
       padding: 1.5rem;
       text-align: center;
+      border-bottom-left-radius: 80px;
+      border-bottom-right-radius: 80px;
     }
     nav {
       margin-top: 1rem;
@@ -32,9 +34,19 @@
     nav a:hover {
       background: #463bb4;
     }
-    .intro {
+    .hero {
+      background: linear-gradient(135deg, #7a5fff, #5fc8ff);
+      color: white;
+      padding: 4rem 1rem 2rem;
       text-align: center;
-      padding: 2rem 1rem;
+    }
+    .hero-content h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      opacity: 0.9;
     }
     .features {
       display: grid;
@@ -50,12 +62,32 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       padding: 1.5rem;
       transition: transform 0.3s;
+      border-top: 5px solid #ccc;
     }
+    .card:nth-child(1) { border-top-color: #6c63ff; }
+    .card:nth-child(2) { border-top-color: #58a6ff; }
+    .card:nth-child(3) { border-top-color: #ffb347; }
+    .card:nth-child(4) { border-top-color: #a29bfe; }
+    .card:nth-child(5) { border-top-color: #ffa69e; }
+    .card:nth-child(6) { border-top-color: #00cec9; }
     .card:hover {
       transform: scale(1.03);
     }
     .card h3 {
       margin-top: 0;
+    }
+    .card a {
+      display: inline-block;
+      margin-top: 0.8rem;
+      background-color: #6c63ff;
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .card a:hover {
+      background-color: #4e46c5;
     }
     footer {
       text-align: center;
@@ -74,13 +106,15 @@
       <a href="board.html">掲示板</a>
       <a href="diary.html">日記</a>
       <a href="books.html">書物</a>
-      <a href="tools.html">シェア資料</a>
+      <a href="tools.html">シェア資料・アイテム</a>
     </nav>
   </header>
 
-  <section class="intro">
-    <h2>Welcome</h2>
-    <p>このページは、小林大資の思考・日記・プロジェクト・ツールなどを集約した個人ポータルです。</p>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>🌊 思考と実践の航海へようこそ</h1>
+      <p>自分の人生を、自分の手でデザインしていく旅。</p>
+    </div>
   </section>
 
   <section class="features">
@@ -110,14 +144,14 @@
       <a href="books.html">▶ 開く</a>
     </div>
     <div class="card">
-      <h3>🧠 シェア資料</h3>
+      <h3>🧠 シェア資料・アイテム</h3>
       <p>WANT診断など、考えるためのツールやスプレッドシート集。</p>
       <a href="tools.html">▶ 開く</a>
     </div>
   </section>
 
   <footer>
-    <p>© 2025 小林大資</p>
+    <p>© 2025 小林大資｜航海は続く。</p>
   </footer>
 </body>
 </html>
