@@ -1,0 +1,104 @@
+<!-- Step ① 掲示板メインのUIデザイン -->
+<!-- 最初はローカルだけで動作するHTML + CSS + JS構成 -->
+<!-- 投稿機能はなく、表示・コメント入力だけ。Firebase連携は後ほど -->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>掲示板メイン（管理者投稿）</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f9f9fb;
+      margin: 0;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+    .post {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .post h3 {
+      margin-top: 0;
+    }
+    .comment-section {
+      margin-top: 1rem;
+    }
+    .comment-input {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 0.5rem;
+    }
+    .comment-button {
+      background-color: #4f46e5;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .comment-button:hover {
+      background-color: #4338ca;
+    }
+    .comment {
+      background: #f1f1ff;
+      border-radius: 8px;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>掲示板メイン</h1>
+
+    <!-- 投稿① -->
+    <div class="post">
+      <h3>🌟 APアワード報告</h3>
+      <p>昨日のアワードを受けて、確信を得たことがあります。...</p>
+
+      <!-- コメント欄（この投稿は開放されている想定） -->
+      <div class="comment-section" id="comments-1">
+        <input class="comment-input" type="text" placeholder="コメントを入力...">
+        <button class="comment-button" onclick="addComment(1)">コメントする</button>
+        <div id="comment-list-1"></div>
+      </div>
+    </div>
+
+    <!-- 投稿② -->
+    <div class="post">
+      <h3>💡今後のプロジェクト予定</h3>
+      <p>現在進行中のプロジェクトについて共有します。現在の優先事項は以下の通りです...</p>
+
+      <!-- コメント欄OFF想定。表示しない -->
+      <!-- コメント欄を閉じている投稿には、この部分を出力しないように後で制御 -->
+    </div>
+  </div>
+
+  <script>
+    function addComment(postId) {
+      const input = document.querySelector(`#comments-${postId} .comment-input`);
+      const list = document.querySelector(`#comment-list-${postId}`);
+      const text = input.value.trim();
+      if (text === "") return;
+
+      const commentDiv = document.createElement("div");
+      commentDiv.className = "comment";
+      commentDiv.textContent = text;
+      list.appendChild(commentDiv);
+
+      input.value = "";
+    }
+  </script>
+</body>
+</html>
