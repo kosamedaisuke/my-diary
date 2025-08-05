@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>掲示板メイン</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 2rem;
+    }
+    .post {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+    .post h2 {
+      margin: 0 0 0.5rem;
+    }
+    .post p {
+      margin: 0 0 1rem;
+    }
+    .comment-section {
+      margin-top: 1rem;
+      border-top: 1px solid #ccc;
+      padding-top: 1rem;
+    }
+    .comment {
+      margin-bottom: 0.5rem;
+      padding: 0.5rem;
+      background: #eef;
+      border-radius: 5px;
+    }
+    textarea {
+      width: 100%;
+      height: 60px;
+      margin-bottom: 0.5rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #6c63ff;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>📌 掲示板メイン</h1>
+
+  <div class="post">
+    <h2>お知らせ：サイト公開しました</h2>
+    <p>みなさん、こんにちは！ついに小林のホームページが公開されました！</p>
+
+    <!-- コメント欄 開放されているときだけ表示 -->
+    <div class="comment-section" id="commentSection1">
+      <h3>💬 コメント欄</h3>
+      <div id="comments1"></div>
+      <textarea id="commentInput1" placeholder="コメントを入力してください..."></textarea>
+      <button onclick="submitComment(1)">コメントを送信</button>
+    </div>
+  </div>
+
+  <script>
+    function submitComment(postId) {
+      const input = document.getElementById(`commentInput${postId}`);
+      const commentText = input.value.trim();
+      if (commentText === "") return;
+
+      const commentDiv = document.createElement("div");
+      commentDiv.className = "comment";
+      commentDiv.textContent = commentText;
+
+      document.getElementById(`comments${postId}`).appendChild(commentDiv);
+      input.value = ""; // 入力欄をクリア
+    }
+  </script>
+</body>
+</html>
